@@ -8,10 +8,10 @@ body{
 .logo{max-width:220px;margin-bottom:20px}
 .hero h1{
     font-family:'Cormorant Garamond', serif;
-    font-size:82px;
+    font-size:68px;
     font-weight:600;
     color:#8F724C;
-    letter-spacing:2px;
+    letter-spacing:1px;
     text-transform:uppercase;
     margin:10px 0 15px;
     line-height:1;
