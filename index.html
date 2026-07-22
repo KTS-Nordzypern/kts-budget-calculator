@@ -1,247 +1,48 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>KTS Budget- & Renditerechner</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KTS Budget- & Renditerechner</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<div class="container">
-
-    <!-- HEADER -->
-
-    <header class="hero">
-
-        <div class="logo">
-            KTS Immobilien
-        </div>
-
-        <h1>
-            Budget- & Renditerechner
-        </h1>
-
-        <p>
-            Berechnen Sie Ihr geschätztes Gesamtbudget sowie eine erste
-            Einschätzung Ihrer möglichen Mietrendite für Immobilien
-            in Nordzypern.
-        </p>
-
-    </header>
-
-
-    <!-- RECHNER -->
-
-    <section class="calculator">
-
-        <div class="card">
-
-            <h2>Kaufpreis</h2>
-
-            <label>Kaufpreis der Immobilie (€)</label>
-
-            <input
-                type="number"
-                id="purchasePrice"
-                placeholder="z.B. 250000"
-            >
-
-        </div>
-
-
-        <div class="card">
-
-            <h2>Immobilienart</h2>
-
-            <div class="radio-group">
-
-                <label>
-                    <input type="radio" name="propertyType" value="new" checked>
-                    Neubau
-                </label>
-
-                <label>
-                    <input type="radio" name="propertyType" value="resale">
-                    Bestandsimmobilie
-                </label>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <h2>Nutzung</h2>
-
-            <div class="radio-group">
-
-                <label>
-                    <input type="radio" name="usage" value="investment" checked>
-                    Investment
-                </label>
-
-                <label>
-                    <input type="radio" name="usage" value="private">
-                    Eigennutzung
-                </label>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="card">
-
-            <h2>Monatliche Miete (optional)</h2>
-
-            <input
-                type="number"
-                id="monthlyRent"
-                placeholder="z.B. 1200"
-            >
-
-        </div>
-
-
-        <button id="calculateBtn">
-
-            Budget berechnen
-
-        </button>
-
-    </section>
-
-
-    <!-- ERGEBNIS -->
-
-    <section class="results">
-
-        <div class="result-card">
-
-            <h2>Geschätztes Gesamtbudget</h2>
-
-            <div id="totalInvestment" class="big-number">
-
-                0 €
-
-            </div>
-
-        </div>
-
-
-        <div class="result-card">
-
-            <h3>Aufschlüsselung</h3>
-
-            <div class="row">
-                <span>Kaufpreis</span>
-                <span id="purchaseResult">0 €</span>
-            </div>
-
-            <div class="row">
-                <span>Geschätzte Nebenkosten</span>
-                <span id="feesResult">0 €</span>
-            </div>
-
-            <div class="row">
-                <span>Anwaltskosten</span>
-                <span id="lawyerResult">0 €</span>
-            </div>
-
-            <div class="row">
-                <span>Transfer-/Grundbuchkosten</span>
-                <span id="transferResult">0 €</span>
-            </div>
-
-            <div class="row total-row">
-                <span>Gesamtbudget</span>
-                <span id="finalResult">0 €</span>
-            </div>
-
-        </div>
-
-
-        <div class="result-card">
-
-            <h3>Rendite</h3>
-
-            <div class="row">
-                <span>Jährliche Miete</span>
-                <span id="annualRent">0 €</span>
-            </div>
-
-            <div class="row">
-                <span>Bruttorendite</span>
-                <span id="yield">0 %</span>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CTA -->
-
-    <section class="contact">
-
-        <h2>
-
-            Fragen zu Ihrer Berechnung?
-
-        </h2>
-
-        <p>
-
-            Unsere Experten beraten Sie kostenlos und unverbindlich.
-
-        </p>
-
-        <a
-            href="#"
-            class="whatsapp-btn"
-            id="whatsappButton"
-        >
-
-            Beratung über WhatsApp
-
-        </a>
-
-    </section>
-
-
-
-    <!-- HINWEIS -->
-
-    <footer>
-
-        <p>
-
-            Die Berechnung dient ausschließlich als unverbindliche
-            Orientierung. Die tatsächlichen Erwerbsnebenkosten können
-            je nach Objekt, Vertragsgestaltung und aktueller Gesetzeslage
-            abweichen.
-
-        </p>
-
-    </footer>
-
-</div>
-
+<header class="hero">
+  <img src="logo.png" class="logo" alt="KTS Logo">
+  <h1>Budget- & Renditerechner</h1>
+  <p>Berechnen Sie Ihr Gesamtbudget für Ihre Immobilie in Nordzypern.</p>
+  <img src="header.jpg" class="heroimg" alt="Nordzypern">
+</header>
+
+<main class="card">
+<label>Kaufpreis (€)</label>
+<input id="price" type="number" placeholder="250000">
+
+<label>Immobilienart</label>
+<select id="type">
+<option>Neubau</option>
+<option>Bestandsimmobilie</option>
+</select>
+
+<label>Nutzung</label>
+<select id="use">
+<option>Kapitalanlage</option>
+<option>Eigennutzung</option>
+</select>
+
+<label>Erwartete Monatsmiete (optional)</label>
+<input id="rent" type="number" placeholder="1200">
+
+<button onclick="calc()">Budget berechnen</button>
+
+<div id="result"></div>
+</main>
+
+<footer>
+<p>Hinweis: Die Berechnung dient ausschließlich einer ersten Orientierung.</p>
+<a class="wa" href="#">Beratung per WhatsApp</a>
+</footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
