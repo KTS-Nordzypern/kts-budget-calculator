@@ -44,3 +44,37 @@ button{margin-top:30px;width:100%;padding:16px;background:#b89a63;color:#fff;bor
 #result{margin-top:30px;padding:20px;background:#f8f5ef;border-radius:12px}
 footer{text-align:center;padding:40px}
 .wa{display:inline-block;background:#25D366;color:#fff;padding:14px 24px;border-radius:10px;text-decoration:none}
+/* Handy-Ansicht */
+@media (max-width: 768px){
+
+    .hero{
+        padding:20px 15px 30px;
+    }
+
+    .logo{
+        max-width:140px;
+    }
+
+    .hero h1{
+        font-size:42px;
+        line-height:1.1;
+        letter-spacing:1px;
+        margin:8px 0 12px;
+    }
+
+    .hero p{
+        font-size:17px;
+        padding:0 10px;
+    }
+
+    .heroimg{
+        margin-top:15px;
+    }
+
+    .card{
+        width:90%;
+        padding:25px;
+        margin:30px auto;
+    }
+
+}
