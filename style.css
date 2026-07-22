@@ -11,7 +11,8 @@ body{
     font-size:82px;
     font-weight:600;
     color:#8F724C;
-    letter-spacing:1px;
+    letter-spacing:2px;
+    text-transform:uppercase;
     margin:10px 0 15px;
     line-height:1;
 }
