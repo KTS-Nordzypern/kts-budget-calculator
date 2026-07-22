@@ -16,7 +16,7 @@ body{
 }
 .hero h1{
     font-family:'Cormorant Garamond', serif;
-    font-size:68px;
+  font-size:clamp(36px, 10vw, 68px);
     font-weight:600;
     color:#8F724C;
     letter-spacing:1px;
