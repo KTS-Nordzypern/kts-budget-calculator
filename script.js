@@ -1,95 +1,73 @@
-// ==========================================
-// KTS Budget- & Renditerechner
-// script.js - Version 1.0
-// ==========================================
-
-// Eingabefelder
-const purchasePriceInput = document.getElementById("purchasePrice");
-const monthlyRentInput = document.getElementById("monthlyRent");
-const calculateBtn = document.getElementById("calculateBtn");
-
-// Ergebnisfelder
-const purchaseResult = document.getElementById("purchaseResult");
-const feesResult = document.getElementById("feesResult");
-const lawyerResult = document.getElementById("lawyerResult");
-const transferResult = document.getElementById("transferResult");
-const finalResult = document.getElementById("finalResult");
-const totalInvestment = document.getElementById("totalInvestment");
-const annualRent = document.getElementById("annualRent");
-const yieldResult = document.getElementById("yield");
-
-// Euro-Formatierung
-function euro(value) {
-    return new Intl.NumberFormat("de-DE", {
-        style: "currency",
-        currency: "EUR",
-        maximumFractionDigits: 0
+function formatCurrency(value) {
+    return new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR'
     }).format(value);
 }
 
-// Berechnung
-calculateBtn.addEventListener("click", () => {
+function calc() {
 
-    const purchase = Number(purchasePriceInput.value);
+    const purchasePrice = parseFloat(document.getElementById("price").value) || 0;
+    const monthlyRent = parseFloat(document.getElementById("rent").value) || 0;
 
-    if (!purchase || purchase <= 0) {
-        alert("Bitte geben Sie einen Kaufpreis ein.");
-        return;
-    }
+    // Vorläufige Beispielwerte
+    const stampDuty = purchasePrice * 0.01;
+    const transferFee = purchasePrice * 0.06;
+    const lawyerFee = purchasePrice * 0.01;
+    const ministryFee = 600;
 
-    // ------------------------------------
-    // Platzhalterwerte
-    // Diese werden später mit eurem Chef
-    // auf die tatsächlichen Werte für
-    // Nordzypern angepasst.
-    // ------------------------------------
+    const totalFees =
+        stampDuty +
+        transferFee +
+        lawyerFee +
+        ministryFee;
 
-    const acquisitionFees = purchase * 0.03;
-    const lawyerFees = purchase * 0.01;
-    const transferFees = purchase * 0.06;
+    const totalInvestment =
+        purchasePrice +
+        totalFees;
 
-    const total =
-        purchase +
-        acquisitionFees +
-        lawyerFees +
-        transferFees;
+    let roi = "-";
 
-    // Ergebnisse ausgeben
+    if (monthlyRent > 0 && purchasePrice > 0) {
 
-    purchaseResult.textContent = euro(purchase);
-    feesResult.textContent = euro(acquisitionFees);
-    lawyerResult.textContent = euro(lawyerFees);
-    transferResult.textContent = euro(transferFees);
-    finalResult.textContent = euro(total);
-    totalInvestment.textContent = euro(total);
-
-    // Rendite berechnen
-
-    const monthlyRent = Number(monthlyRentInput.value);
-
-    if (monthlyRent > 0) {
-
-        const yearlyRent = monthlyRent * 12;
-        const grossYield = (yearlyRent / purchase) * 100;
-
-        annualRent.textContent = euro(yearlyRent);
-        yieldResult.textContent = grossYield.toFixed(2) + " %";
-
-    } else {
-
-        annualRent.textContent = "-";
-        yieldResult.textContent = "-";
+        roi = (
+            (monthlyRent * 12 / purchasePrice) * 100
+        ).toFixed(2) + " %";
 
     }
 
-});
+    document.getElementById("result").innerHTML = `
 
-// WhatsApp-Button
-const whatsapp = document.getElementById("whatsappButton");
+        <h2>Ergebnis</h2>
 
-if (whatsapp) {
+        <p><strong>Kaufpreis:</strong>
+        ${formatCurrency(purchasePrice)}</p>
 
-    // HIER SPÄTER EURE WHATSAPP-NUMMER EINTRAGEN
-    whatsapp.href = "https://wa.me/905000000000";
+        <p><strong>Grunderwerb / Stempelsteuer:</strong>
+        ${formatCurrency(stampDuty)}</p>
+
+        <p><strong>Grundbuchumschreibung:</strong>
+        ${formatCurrency(transferFee)}</p>
+
+        <p><strong>Anwaltskosten:</strong>
+        ${formatCurrency(lawyerFee)}</p>
+
+        <p><strong>Ministeriumsgebühr:</strong>
+        ${formatCurrency(ministryFee)}</p>
+
+        <hr>
+
+        <p><strong>Gesamte Nebenkosten:</strong>
+        ${formatCurrency(totalFees)}</p>
+
+        <p><strong>Gesamtbudget:</strong>
+        ${formatCurrency(totalInvestment)}</p>
+
+        <hr>
+
+        <p><strong>Geschätzte Bruttorendite:</strong>
+        ${roi}</p>
+
+    `;
 
 }
