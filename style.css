@@ -5,7 +5,11 @@ body{
     color:#3d352e;
 }
 .hero{text-align:center;padding:50px 20px}
-.logo{max-width:220px;margin-bottom:20px}
+
+.logo{
+    max-width:180px;
+    margin-bottom:5px;
+}
 .hero h1{
     font-family:'Cormorant Garamond', serif;
     font-size:68px;
